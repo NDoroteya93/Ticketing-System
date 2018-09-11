@@ -1,0 +1,24 @@
+﻿@model IEnumerable<TicketingSystem.Web.Models.TicketBasicViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@*<p>Admin account is: <strong>Username: admin and password: admin123</strong></p>*@
+@*@Html.ActionLink("Create", "Create", "Tickets")*@
+<div class="row-fluid">
+    <div class="span4 ticketTasks">
+        <p><strong>To Do: </strong></p>
+    </div>
+
+    <div class="span4 ticketTasks">
+        <p><strong>In Progress: </strong></p>
+    </div>
+
+    <div class="span4 ticketTasks">
+        <p><strong>Done: </strong></p>
+    </div>
+</div>
+<div id="droptarget">
+    @Html.Partial("_HomePartialView", Model)
+</div>

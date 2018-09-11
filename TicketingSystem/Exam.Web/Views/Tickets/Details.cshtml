@@ -1,0 +1,233 @@
+﻿@using Microsoft.AspNet.Identity
+@using Kendo.Mvc
+
+@model TicketingSystem.Web.Models.TicketDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3 class="ticket-title">@Model.Title</h3>
+<h4 class="ticket-categories">Category: @Model.Category</h4>
+
+<div class="row">
+
+    <div class="span4">
+
+        <p><strong>Author: </strong>@Model.Author</p>
+        <p><strong>Priority: </strong>@Model.Priority</p>
+        <div class="divAssigneeTitle">
+            <p><strong>Assignee: </strong><label id="lbAssignedUser">@(string.IsNullOrEmpty(Model.Assignee) ? "Unassigned" : Model.Assignee)</label></p>
+            <p><strong>Created Date: </strong><label id="lbCreatedDate">@(Model.CreateDate)</label></p>
+            @if(Model.TaskState == TicketingSystem.Models.TaskState.Done)
+            { 
+            <p><strong>Created Date: </strong><label id="lbCreatedDate">@(Model.EndDate)</label></p>
+            }
+
+            <div class="stateButtons">
+            @using (Ajax.BeginForm("ChangeState", "Tickets",
+            new AjaxOptions
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.Replace,
+                OnSuccess = "ShowHideButton"
+            }))
+            {
+                @Html.HiddenFor(x => x.Id);
+                @Html.HiddenFor(x => x.TaskState);
+                <input type="submit" id="btnStartProgress" style="display:none;" value="Start Progress" />
+            }
+
+            @using (Ajax.BeginForm("ChangeState", "Tickets",
+            new AjaxOptions
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.Replace,
+                OnSuccess = "ShowHideButton"
+            }))
+            {
+                @Html.HiddenFor(x => x.Id);
+                @Html.HiddenFor(x => x.TaskState);
+                <input type="submit" id="btnStopProgress" style="display:none;" value="Stop Progress" />
+            }
+
+            @using (Ajax.BeginForm("ChangeState", "Tickets",
+            new AjaxOptions
+            {
+                HttpMethod = "POST",
+                InsertionMode = InsertionMode.Replace,
+                OnSuccess = "ShowHideButton"
+            }))
+            {
+                @Html.HiddenFor(x => x.Id);
+                @Html.HiddenFor(x => x.TaskState, new { Value = TicketingSystem.Models.TaskState.Done });
+                <input type="submit" id="btnDone" value="Done" />
+            }
+
+            <input type="button" id="btnChangeAssiggne" value="Change" />
+            </div>
+        </div>
+
+                @*<strong>Assignee: </strong><label id="lbAssignedUser">@(string.IsNullOrEmpty(Model.Assignee) ? "Unassigned" : Model.Assignee)</label>*@
+        <div class="divAssigneeEdit">
+            @(Html.Kendo().ComboBox()
+         .Name("users")
+          .Placeholder("Select product")
+          .DataTextField("UserName")
+          .DataValueField("Id")
+          .HtmlAttributes(new { style = "width:100%;style:none;", @class = "cmAssigneeEdit", @id = "cmAssigneeEdit" })
+          .Filter("contains")
+          .AutoBind(false)
+          .MinLength(3)
+            .Events(e =>
+            {
+                e.Select("onSelect");
+            })
+          .DataSource(source =>
+          {
+              source.Read(read =>
+              {
+                  read.Action("GetUsers", "Tickets");
+              })
+              .ServerFiltering(true);
+          })
+            )
+                    <input type="button" id="spClose" value="Close" />
+    </div>
+            <hr/>
+            @*<input type="button" id="btnChangeAssiggne" value="Change" />*@ 
+            @Html.ActionLink("Create Sub-Ticket", "Create", "Tickets", new
+        {
+                   Id = Model.Id,
+               },
+       null
+       )  
+            </div>
+
+    </div>
+
+    <div class="span4">
+        @if (!string.IsNullOrEmpty(Model.ScreenshotUrl))
+        {
+            <img src="@Model.ScreenshotUrl" alt="@Model.Title" width="300" />
+        }
+    </div>
+
+    <div class="span4">
+        @if (!string.IsNullOrEmpty(Model.Description))
+        {
+            <p><strong>Description: </strong>@Model.Description</p>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <h3 class="ticket-title">Sub-Tickets</h3>
+    @foreach (var subTickets in Model.Tickets)
+    {
+        <div class="span4">
+            <h3>@subTickets.Title</h3>
+            <p><strong>Category:</strong> @subTickets.Category</p>
+            <p><strong>Author:</strong> @subTickets.Author</p>
+            <p>@subTickets.CommentsCount comment(s)</p>
+            <br />
+            <a class="k-button moreDetails" href="/Tickets/Details/@subTickets.Id">More details...</a>
+        </div>
+    }
+</div>
+
+<div class="row">
+<h3 class="ticket-title">Comments</h3>
+<div id="comments">
+    @if (Model.Comments != null && Model.Comments.Count() > 0)
+    {
+        foreach (var comment in Model.Comments)
+        {
+            <p><strong>@comment.Author: </strong>@comment.Content</p>
+        }
+    }
+
+</div>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <h3 class="ticket-title">Add comment</h3>
+        @using (Ajax.BeginForm("Comment", new AjaxOptions
+        {
+            HttpMethod = "Post",
+            InsertionMode = InsertionMode.InsertAfter,
+            UpdateTargetId = "comments",
+            OnSuccess = "clearTextArea"
+        }))
+        {
+            
+            <br />
+            @Html.Hidden("Id", Model.Id);
+            @Html.TextArea("Content");
+            <br />
+    <input type="submit" class="comment-btn" name="Submit comment now" value="Submit comment" />
+        }
+    </div>
+}
+
+<script>
+    $(document).ready(function(){
+
+        @if(Model.TaskState == TicketingSystem.Models.TaskState.ToDo)
+        {
+               @:$("#btnStartProgress").show();
+                                }
+        else if(Model.TaskState == TicketingSystem.Models.TaskState.InProgress)
+        {
+             @:$("#btnStartProgress").hide();
+                                      @:$("#btnStopProgress").show();
+                                }
+        else
+        {
+               @:$("#btnStartProgress").hide();
+                        @:$("#btnStopProgress").hide();
+                         @:$("#btnDone").hide();
+                }
+    });
+    function clearTextArea() {
+        $("#Content").val("");
+    }
+    function onSelect(e) {
+        var dataItem = this.dataItem(e.item.index());
+        $.ajax({
+            url: '/Tickets/AssigneeUserToTask',
+            data: JSON.stringify({
+                Id: @Model.Id,
+                UserId: dataItem.Id,
+            }),
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8'
+        }).done(function( data ) {
+            if(data == "")
+            {
+                $("#lbAssignedUser").text("Unassigned");
+            }else{
+                $("#lbAssignedUser").text(data);
+            }
+            $(".divAssigneeEdit").hide();
+        });
+    }
+    function ShowHideButton(data){
+        if(data == "InProgress")
+        {
+            $("#btnStopProgress").show();
+            $("#btnStartProgress").hide();
+
+        }else if(data == "ToDo")
+        {
+            $("#btnStopProgress").hide();
+            $("#btnStartProgress").show();
+        }else{
+            $("#btnStopProgress").hide();
+            $("#btnStartProgress").hide();
+            $("#btnDone").hide();
+        }
+
+    }
+</script>

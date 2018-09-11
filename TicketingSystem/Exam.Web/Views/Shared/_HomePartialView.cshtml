@@ -1,0 +1,117 @@
+﻿@model IEnumerable<TicketingSystem.Web.Models.TicketBasicViewModel>
+@{
+    ViewBag.Title = "_HomePartialView";
+}
+
+<div id="divToDo" class="divToDo">
+    @for (int i = 1; i <= Model.Count(); i++)
+    {
+        var currentTicket = Model.ElementAt(i - 1);
+        if (currentTicket.TaskState == TicketingSystem.Models.TaskState.ToDo)
+        {
+            <div class="span4 ticketBox">
+                <input type="hidden" id="hdnTicketId" value="@currentTicket.Id" />
+                <div class="inner-ticket-box">
+                    <div class="ticket-heading">
+                        <h4>@currentTicket.Title</h4>
+                    </div>
+                    <div class="ticket-body">
+                        <p><strong>Category:</strong> @currentTicket.Category</p>
+                        <p><strong>Author:</strong> @currentTicket.Author</p>
+                        <p><strong>State:</strong> @currentTicket.TaskState</p>
+                        <p>@currentTicket.CommentsCount comment(s)</p>
+                        <br />
+                    </div>
+                </div>
+                <div class="ticket-footer">
+                    <a class="k-button" href="/Tickets/Details/@currentTicket.Id">More details...</a>
+                </div>
+            </div>
+
+        }
+    }
+</div>
+<div id="divInProgress" class="divInProgress">
+    @for (int i = 1; i <= Model.Count(); i++)
+    {
+        var currentTicket = Model.ElementAt(i - 1);
+        if (currentTicket.TaskState == TicketingSystem.Models.TaskState.InProgress)
+        {
+            <div class="span4 ticketBox">
+                <input type="hidden" id="hdnTicketId" value="@currentTicket.Id" />
+                <div class="inner-ticket-box">
+                    <div class="ticket-heading">
+                        <h4>@currentTicket.Title</h4>
+                    </div>
+                    <div class="ticket-body">
+                        <p><strong>Category:</strong> @currentTicket.Category</p>
+                        <p><strong>Author:</strong> @currentTicket.Author</p>
+                        <p><strong>State:</strong> @currentTicket.TaskState</p>
+                        <p>@currentTicket.CommentsCount comment(s)</p>
+                        <br />
+                    </div>
+                </div>
+                <div class="ticket-footer">
+                    <a class="k-button" href="/Tickets/Details/@currentTicket.Id">More details...</a>
+                </div>
+            </div>
+        }
+
+    }
+</div>
+<div id="divDone" class="divDone">
+    @for (int i = 1; i <= Model.Count(); i++)
+    {
+        var currentTicket = Model.ElementAt(i - 1);
+        if (currentTicket.TaskState == TicketingSystem.Models.TaskState.Done)
+        {
+            <div class="span4 ticketBox">
+                <input type="hidden" id="hdnTicketId" value="@currentTicket.Id" />
+                <div class="inner-ticket-box">
+                    <div class="ticket-heading">
+                        <h4>@currentTicket.Title</h4>
+                    </div>
+                    <div class="ticket-body">
+                        <p><strong>Category:</strong> @currentTicket.Category</p>
+                        <p><strong>Author:</strong> @currentTicket.Author</p>
+                        <p><strong>State:</strong> @currentTicket.TaskState</p>
+                        <p>@currentTicket.CommentsCount comment(s)</p>
+                        <br />
+                    </div>
+                </div>
+                <div class="ticket-footer">
+                    <a class="k-button" href="/Tickets/Details/@currentTicket.Id">More details...</a>
+                </div>
+            </div>
+        }
+    }
+</div>
+<script>
+    $(".ticketBox").kendoDraggable({
+        group: "ticketGroup",
+        hint: function (element) {
+            return $(element).clone();
+        },
+    });
+
+    $("#droptarget").kendoDropTargetArea({
+        group: "ticketGroup",
+        filter: ".divToDo, .divInProgress, .divDone",
+        drop: droptargetOnDrop
+    });
+    function droptargetOnDrop(e) {
+        var ticketId = $(e.draggable.element).find("#hdnTicketId").val();
+        var state = $(e.dropTarget).attr("id");
+        $.ajax({
+            url: '/Home/DragAndDropItems/',
+            data: JSON.stringify({
+                Id: ticketId,
+                TicketState: state
+            }),
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8'
+        }).done(function (data) {
+            $("#droptarget").load('@(Url.Action("GetAllTickets", "Home", new { orderBy = Exam.Models.OrderByEnum.Comments }, Request.Url.Scheme))');
+        });
+    }
+</script>

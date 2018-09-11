@@ -1,0 +1,13 @@
+﻿@using TicketingSystem.Web.Controllers
+@using TicketingSystem.Models
+//@model TicketingSystem.Models.Priority
+
+@{
+    Layout = null;
+}
+
+@(Html.Kendo()
+    .DropDownList()
+    .Name("Status")
+    .BindTo(EnumsController.EnumToDropDownList(typeof(Priority)))
+)

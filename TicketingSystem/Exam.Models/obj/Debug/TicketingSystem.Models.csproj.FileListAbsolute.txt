@@ -1,0 +1,14 @@
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\Exam.Models.dll.config
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\Exam.Models.dll
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\Exam.Models.pdb
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\EntityFramework.dll
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\EntityFramework.xml
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\Projects\TicketingSystem\Exam.Models\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Projects\TicketingSystem\Exam.Models\obj\Debug\Exam.Models.dll
+D:\Projects\TicketingSystem\Exam.Models\obj\Debug\Exam.Models.pdb
+D:\Projects\TicketingSystem\Exam.Models\obj\Debug\TicketingSystem.Models.csprojResolveAssemblyReference.cache

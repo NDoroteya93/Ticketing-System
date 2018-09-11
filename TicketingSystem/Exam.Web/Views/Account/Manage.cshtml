@@ -1,0 +1,129 @@
+@using TicketingSystem.Web.Models;
+@using Microsoft.AspNet.Identity;
+@model TicketingSystem.Web.Models.TicketBasicViewModel
+@{
+    ViewBag.Title = "Manage Account";
+}
+
+<p class="profile-style"><strong>Profile: </strong><span>@User.Identity.GetUserName()</span></p>
+<div class="">
+    <hgroup>
+        <h3 class="ticket-title manage">@ViewBag.Title.</h3>
+    </hgroup>
+
+    <p class="text-success">@ViewBag.StatusMessage</p>
+
+    <canvas id="userTasks" width="400" height="200"></canvas>
+
+    <div class="profileInfo">
+        <p class=""><strong>Username: </strong><span>@User.Identity.GetUserName()</span></p>
+        <p class=""><strong>User Role: </strong><span>@ViewBag.UserRole</span></p>
+        <p class=""><strong>Password </strong><a href="#" class="showPassword" >Change password</a></p>
+    </div>
+</div>
+
+<h3 class="ticket-title">Finished Tickets</h3>
+@(Html.Kendo().Grid<TicketBasicViewModel>()
+    .Name("FinishedTickets")
+      .Columns(col =>
+      {
+          col.Bound(c => c.Title);
+          col.Bound(c => c.Description);
+          col.Bound(c => c.EndDate);
+      })
+    .Sortable()
+    .Pageable()
+    .Filterable()
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(10)
+        .Read(read => read.Action("Read", "Account"))
+    )
+)
+
+<div class="row-fluid">
+    <div class="span6">
+        @if (ViewBag.HasLocalPassword)
+        {
+            @Html.Partial("_ChangePasswordPartial")
+        }
+        else
+        {
+            @Html.Partial("_SetPasswordPartial")
+        }
+
+        <section id="externalLogins">
+            @Html.Action("RemoveAccountList")
+
+            @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+        </section>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+      $.ajax({
+          url: '@Url.Action("GetUserTickets", "Account")',
+          data: JSON.stringify({
+              //orderBy: value,
+          }),
+          type: 'GET',
+          contentType: 'application/json; charset=utf-8'
+      }).done(function (data) {
+          var dataToObject = JSON.parse(data);
+          var chartData = $.map(dataToObject, function (x) {
+              return x.Count;
+          });
+          var chartLabels = $.map(dataToObject, function (x) {
+              return x.TaskState;
+          });
+
+          var vacationsChart = new Chart(document.getElementById("userTasks"), {
+              type: 'pie',
+              data: {
+                  labels: chartLabels,
+                  datasets: [{
+                      data: chartData,
+                     backgroundColor: [
+                "#F7464A",
+                "#46BFBD",
+                "#FDB45C"
+            ],
+                  }]
+              },
+              options: {
+                  legend: {
+                      display: true,
+                      position: 'bottom',
+                      fullWidth: true,
+                      labels: {
+                          fontColor: 'rgb(255, 99, 132)',
+                          boxWidth: 20
+                      }
+                  },
+                  responsive: false
+              }
+          });
+      });
+
+    $(document).ready(function () {
+        $(".showPassword").on("click", function () {
+            $(".hidePassword").show();
+            goToByScroll("OldPassword");
+            $("#OldPassword").focus();
+
+        });
+
+        function goToByScroll(id) {
+            // Reove "link" from the ID
+            id = id.replace("link", "");
+            // Scroll
+            $('html,body').animate({
+                scrollTop: $("#" + id).offset().top
+            },
+                'slow');
+        }
+    });
+</script>

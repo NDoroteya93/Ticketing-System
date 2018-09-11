@@ -1,0 +1,828 @@
+﻿body {
+    padding-top: 0;
+    padding-bottom: 40px;
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+/*///////////////////////////////////////////// Home Page ///////////////////////////////////////////////*/
+.jumbotron {
+    background: rgba(123,183,239,1);
+    background: -moz-linear-gradient(top, rgba(123,183,239,1) 0%, rgba(26,89,156,1) 81%, rgba(26,89,156,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(123,183,239,1)), color-stop(81%, rgba(26,89,156,1)), color-stop(100%, rgba(26,89,156,1)));
+    background: -webkit-linear-gradient(top, rgba(123,183,239,1) 0%, rgba(26,89,156,1) 81%, rgba(26,89,156,1) 100%);
+    background: -o-linear-gradient(top, rgba(123,183,239,1) 0%, rgba(26,89,156,1) 81%, rgba(26,89,156,1) 100%);
+    background: -ms-linear-gradient(top, rgba(123,183,239,1) 0%, rgba(26,89,156,1) 81%, rgba(26,89,156,1) 100%);
+    background: linear-gradient(to bottom, rgba(123,183,239,1) 0%, rgba(26,89,156,1) 81%, rgba(26,89,156,1) 100%);
+}
+
+    .jumbotron div.container h1,
+    .jumbotron div.container p {
+        color: #e5e5e5;
+        text-shadow: 0 4px 0 #059;
+    }
+
+}
+
+.jumbotron div.container h1 {
+    margin-bottom: 0 !important;
+}
+
+.jumbotron div.container p {
+    margin-left: 1%;
+}
+
+/*Navigation Menu*/
+div.navbar ul.k-widget li.k-item {
+    border: 0 !important;
+}
+
+div.navbar ul.k-header,
+div.navbar ul.k-header .k-state-highlight,
+.k-menu .k-state-hover .k-state-active > .k-link {
+    background: #f19f4d;
+}
+/*Navigation Buttons*/
+div.navbar .k-menu .k-item > .k-link,
+.k-menu .k-state-hover > .k-state-active {
+    color: white;
+    text-shadow: 0 1px 0 #f0713a;
+    padding: 1em 0.9em 0.9em;
+}
+
+.ticketTasks:first-child p:before{
+    content:'■';
+    font-size:24px;
+    color:#337ab7;
+}
+
+.ticketTasks:nth-child(2) p:before{
+    content:'■';
+    font-size:24px;
+    color:#ffce9d;
+}
+
+.ticketTasks:nth-child(3) p:before{
+    content:'■';
+    font-size:24px;
+    color:#dff0d8;
+}
+
+div.navbar .k-menu li a:hover,
+div.navbar .k-menu li a:focus,
+div.navbar .k-menu li:hover,
+.k-popup {
+    text-decoration: none;
+    outline: 0;
+    color: orange !important;
+    text-shadow: 0 0px 0 #f0713a !important;
+    background: white;
+}
+
+
+.ticketBox {
+    margin-bottom: 5px;
+    background-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.divToDo .span4,
+.divInProgress .span4,
+.divDone .span4 {
+    width: 98%;
+    margin: 0.8%;
+    height: auto;
+}
+/*details form tickes*/
+.detailsBox {
+    border-color: #337ab7;
+}
+
+    .detailsBox fieldset {
+        padding: 15px;
+    }
+/*Border first column*/
+.divToDo .span4,
+.row-fluid .ticketBox {
+    border-color: #337ab7;
+}
+/*border second column*/
+.divInProgress .span4 {
+    border-color: #ed6316;
+}
+/*border third column*/
+.divDone .span4 {
+    border-color: #d6e9c6;
+}
+
+.ticket-heading {
+    padding: 1% 5%;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.details-heading {
+    text-align: center;
+}
+
+.ticket-heading h4 {
+    margin: 2%;
+}
+/*first Ticket Column*/
+.divToDo .span4 div.inner-ticket-box > .ticket-heading,
+.details-heading,
+.row-fluid .ticketBox .ticket-heading {
+    color: #fff;
+    text-shadow: 0 1px 0 blue;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+
+/*Search ticket*/
+.row-fluid .ticketBox .ticket-heading {
+    margin: 0 0 6% 0;
+    padding: 3% 5% !important;
+}
+/*Secont ticket Column*/
+.divInProgress .span4 div.inner-ticket-box > .ticket-heading {
+    color: #ed6316;
+    background-color: #ffce9d;
+    border-color: #ed6316;
+}
+/*third ticket column*/
+.divDone .span4 div.inner-ticket-box > .ticket-heading {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+/*.ticket-body {
+    padding: 5%;
+}*/
+
+.ticket-footer {
+    padding: 0;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+    .ticket-footer .k-button {
+        width: 100%;
+        border-radius: 0;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+
+/*button fore "More details..."  first colymn*/
+.divToDo .span4 .ticket-footer .k-button,
+.row-fluid .span4 .ticket-footer .k-button {
+    color: #337ab7;
+    border: 0;
+    border-top: 1px solid #337ab7;
+}
+
+    .divToDo .span4 .ticket-footer .k-button:hover,
+    .row-fluid .span4 .ticket-footer .k-button:hover {
+        color: #fff;
+        text-shadow: 0 1px 0 blue;
+        background-color: #337ab7;
+        background-image: none,linear-gradient(to bottom,#0088cc 0,rgba(26,89,156,1) 100%);
+        text-decoration: none;
+    }
+/*button for "More details..."  second colymn*/
+.divInProgress .span4 .ticket-footer .k-button {
+    color: #ed6316;
+    border: 0;
+    border-top: 1px solid #ed6316;
+}
+
+    .divInProgress .span4 .ticket-footer .k-button:hover {
+        color: #f2dede;
+        text-shadow: 0 1px 0 #fff;
+        background: rgba(237,99,22,1);
+        background: -moz-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(237,99,22,1)), color-stop(55%, rgba(241,159,77,1)), color-stop(100%, rgba(252,213,114,1)));
+        background: -webkit-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%);
+        background: -o-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%);
+        background: -ms-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%);
+        background: linear-gradient(to bottom, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%);
+        text-decoration: none;
+    }
+/*button fore "More details..."  third colymn*/
+.divDone .span4 .ticket-footer .k-button {
+    color: #3c763d;
+    border: 0;
+    border-top: 1px solid #d6e9c6;
+}
+
+    .divDone .span4 .ticket-footer .k-button:hover {
+        color: #dff0d8;
+        background-color: #3c763d;
+        background-image: none,linear-gradient(to bottom,#749571 0,#3c763d 100%);
+        text-shadow: 0 1px 0 #fff;
+        text-decoration: none;
+    }
+
+
+/*////////////////////////////////////////////Login Page ////////////////////////////////////////*/
+div.container {
+    position: relative;
+}
+
+div.span13 {
+    width: 50%;
+}
+
+div.container hr {
+    /*display:none;*/
+}
+/*form Style*/
+section#loginForm form,
+form[action="/Account/Register"],
+form[action^="/Tickets/Create"],
+form[action^="/CommentsAdmin/Edit"] {
+    margin-top: 4%;
+    background: #e8e8e8;
+    border: 1px solid #d5d5d5;
+    border-radius: 18px;
+    padding: 0.5em;
+    -webkit-box-shadow: 3px 9px 17px 0px rgba(112,111,112,0.65);
+    -moz-box-shadow: 3px 9px 17px 0px rgba(112,111,112,0.65);
+    box-shadow: 3px 9px 17px 0px rgba(112,111,112,0.65);
+}
+
+form[action^="/Tickets/Create"] {
+    width: 50%;
+    padding-top: 6%;
+}
+
+section#loginForm fieldset {
+    margin-top: 5%;
+}
+
+.form-horizontal .no-color {
+    background-color: #e8e8e8;
+}
+
+.login-picture,
+.reg-picture,
+.add-picture,
+.edit-picture {
+    background-color: #0062f0;
+    border: 2px solid #1d5c9e;
+    top: 3%;
+    border-radius: 40px;
+    z-index: -1;
+    position: absolute;
+    -webkit-box-shadow: inset 15px 51px 181px -63px rgba(0,28,239,1);
+    -moz-box-shadow: inset 15px 51px 181px -63px rgba(0,28,239,1);
+    box-shadow: inset 15px 51px 181px -63px rgb(58, 120, 183);
+}
+
+.login-picture {
+    width: 19.5%;
+    height: 50px;
+    left: 14.3%;
+}
+
+.reg-picture {
+    width: 23%;
+    height: 50px;
+    left: 14.5%;
+}
+
+.add-picture {
+    width: 23%;
+    height: 70px;
+    left: 14.6%;
+}
+
+.edit-picture {
+    width: 20%;
+    height: 70px;
+    left: 14.6%;
+}
+
+div.form-actions .btn,
+.login-inner-picture,
+.reg-inner-picture,
+.add-inner-picture,
+div.row .btn,
+.edit-inner-picture {
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+}
+
+.login-inner-picture,
+.reg-inner-picture,
+.add-inner-picture,
+.edit-inner-picture {
+    border-radius: 14px;
+    -webkit-box-shadow: 2px 6px 32px 0px rgba(89,89,89,1);
+    -moz-box-shadow: 2px 6px 32px 0px rgba(89,89,89,1);
+    box-shadow: 2px 6px 32px 0px rgba(89,89,89,1);
+    position: absolute;
+    top: 3%;
+    border-top: 1px solid #1a599c;
+    left: 15.6%;
+    height: 57px;
+}
+
+.login-inner-picture {
+    width: 16.9%;
+}
+
+.reg-inner-picture {
+    width: 20.9%;
+}
+
+.add-inner-picture {
+    width: 20.9%;
+}
+
+.edit-inner-picture {
+    width: 17.9%;
+}
+
+/*Login image Padlock*/
+.login-inner-picture img {
+    max-width: 200px;
+    width: 25%;
+    height: 85%;
+}
+
+.reg-inner-picture img,
+.add-inner-picture img,
+.edit-inner-picture img {
+    max-width: 200px;
+    width: 25%;
+    height: 80%;
+    margin-left: 6px;
+    margin-top: 5px;
+}
+
+.login-inner-picture h3,
+.reg-inner-picture h3,
+.add-inner-picture h3,
+.edit-inner-picture h3 {
+    position: absolute;
+    top: 0;
+    left: 37%;
+}
+
+
+/*Legend*/
+
+.form-horizontal legend {
+    padding-top: 7%;
+    text-align: center;
+}
+
+
+/*Check Button*/
+.regular-checkbox {
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 6px;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    margin: 4px 0 0;
+}
+
+    .regular-checkbox:active,
+    .regular-checkbox:checked:active {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .regular-checkbox:checked:after {
+        content: "\2713";
+        font-size: 10px;
+        position: absolute;
+        top: 0;
+        left: 2px;
+        color: #01aef0;
+    }
+
+    .regular-checkbox:focus {
+        background-color: #e9ecee;
+        border: 1px solid #adb8c0;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+        color: #99a1a7;
+    }
+/*Submit buttnon*/
+.form-actions {
+    padding: 0;
+    margin-left: 23%;
+}
+
+div.form-actions .btn,
+div.row .btn {
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    text-shadow: 0px 1px 2px #666666;
+    -webkit-box-shadow: 2px 3px 5px rgba(89,89,89,1);
+    -moz-box-shadow: 2px 3px 5px rgba(89,89,89,1);
+    box-shadow: 2px 3px 5px rgba(89,89,89,1);
+    font-family: Arial;
+    color: #000000;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+    div.form-actions .btn:hover,
+    div.row .btn:hover {
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+    }
+
+/*//////////////////////  "More details" Style /////////////////////////////////*/
+.ticket-title {
+    background: rgba(232,232,232,1);
+    background: -moz-linear-gradient(top, rgba(232,232,232,1) 0%, rgba(232,232,232,1) 51%, rgba(184,184,184,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(232,232,232,1)), color-stop(51%, rgba(232,232,232,1)), color-stop(100%, rgba(184,184,184,1)));
+    background: -webkit-linear-gradient(top, rgba(232,232,232,1) 0%, rgba(232,232,232,1) 51%, rgba(184,184,184,1) 100%);
+    background: -o-linear-gradient(top, rgba(232,232,232,1) 0%, rgba(232,232,232,1) 51%, rgba(184,184,184,1) 100%);
+    background: -ms-linear-gradient(top, rgba(232,232,232,1) 0%, rgba(232,232,232,1) 51%, rgba(184,184,184,1) 100%);
+    background: linear-gradient(to bottom, rgba(232,232,232,1) 0%, rgba(232,232,232,1) 51%, rgba(184,184,184,1) 100%);
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+}
+
+.span4 p,
+.ticket-categories,
+div#comments p,
+dl dd {
+    border: 0;
+    border-bottom: 1px solid rgba(184,184,184,1);
+    padding: 1%;
+}
+
+.ticket-body p {
+    padding: 0;
+}
+
+div#comments p {
+    margin: 0;
+}
+
+    div#comments p:nth-child(even),
+    .table tr:nth-child(even) {
+        background-color: #eeeeee;
+    }
+
+/*add comment*/
+div.row textarea {
+    background: #fff;
+    border: 1px solid #b8b8b8;
+    width: 45%;
+    height: 80px;
+    padding: 5px;
+    color: #000;
+    font-weight: bold;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+    div.row textarea:focus {
+        background: #e5e5e5;
+    }
+
+/*search Ticket*/
+.search-ticket-container,
+.row .search-title,
+#listView_pager,
+.k-grid-header .k-header,
+div[data-role="pager"] {
+    background: #ffce9d;
+}
+
+    /*Submit button*/
+    .search-ticket-container div {
+        float: right;
+    }
+        /*Styde submit buttons and seleckt*/
+        .search-ticket-container div input[type='submit'],
+        .search-ticket-container .k-dropdown,
+        .span2 .k-button,
+        .comment-btn,
+        input[value="Change"],
+        .divAssigneeEdit .k-widget,
+        #spClose,
+        .divAssigneeTitle a,
+        a.moreDetails,
+        td[role="gridcell"] .k-button,
+        #btnStartProgress,
+        #btnStopProgress,
+        #btnDone,
+        a[href^="/Tickets/Create/"] {
+            color: #ed6316;
+            border: 1px solid #ed6316;
+            border-radius: 4px;
+            height: 30px;
+        }
+
+/*Sub-Tickets button*/
+a[href^="/Tickets/Create/"] {
+    background-color: #dddddd;
+    padding: 6px 9px;
+}
+
+    /*Submi buttons input search, submit button add comments*/
+    .search-ticket-container div input[type='submit']:hover,
+    .search-ticket-container .k-dropdown-wrap:hover,
+    .span2 .k-button:hover,
+    .comment-btn:hover,
+    input[value="Change"]:hover,
+    .divAssigneeEdit .k-widget .k-state-default > .k-select:hover,
+    #spClose:hover,
+    a.moreDetails:hover,
+    td[role="gridcell"] .k-button:hover,
+    td[role="gridcell"] .k-button:focus,
+    #btnStartProgress:hover,
+    #btnStopProgress:hover,
+    #btnDone:hover,
+    a[href^="/Tickets/Create/"]:hover,
+    .change-password:hover {
+        color: #fff;
+        text-shadow: 0 1px 0 #ed6316;
+        background-color: #ed6316;
+        background: rgba(237,99,22,1);
+        background: -moz-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(237,99,22,1)), color-stop(55%, rgba(241,159,77,1)), color-stop(100%, rgba(252,213,114,1)));
+        background: -webkit-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%);
+        background: -o-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%);
+        background: -ms-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%);
+        background: linear-gradient(to bottom, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%);
+        text-decoration: none;
+    }
+
+.divAssigneeTitle a:hover,
+td[role="gridcell"] .k-button:hover,
+td[role="gridcell"] .k-button:focus {
+    text-decoration: none;
+}
+
+.no-color-change {
+    background: transparent !important;
+}
+/*select menu*/
+.search-ticket-container .k-dropdown .k-input {
+    color: #ed6316;
+}
+
+/*header  table*/
+.row .search-title,
+#listView_pager {
+    padding: 6px;
+    text-shadow: 0 1px 0 white;
+    color: #ed6316;
+}
+
+#listView,
+#Categories-grid,
+div[data-role="pager"],
+.k-grid-header .k-header,
+#Categories-grid table td {
+    border-color: #ed6316;
+}
+
+#listView_pager {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-color: #ed6316;
+    border-top: 0;
+}
+
+.row .search-title:not(:first-child) {
+    margin-left: 6px;
+}
+
+.search-content:not(:first-child):not(:last-child) {
+    margin-left: 1.5%;
+    margin-bottom: 1%;
+}
+
+.row .search-title:first-child {
+    border-top-left-radius: 5px !important;
+}
+
+/*table Content*/
+.search-content:not(:last-child) {
+    background: #f4f4f4;
+    padding: 9px 0px 9px 1px;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+/*label in details Ticket*/
+#lbAssignedUser {
+    display: inline-block;
+}
+
+/*//////////////////////////////////Categories Admin///////////////////////////////*/
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: red;
+    list-style: none;
+    position: absolute;
+    top: 19%;
+    left: 17%;
+}
+
+    .validation-summary-errors ul {
+        list-style: none;
+    }
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* styles for removing the background from form */
+.no-color {
+    background-color: white;
+    border-style: none;
+}
+
+/*Change details Assignee*/
+.divAssigneeEdit {
+    display: none;
+}
+
+    .divAssigneeEdit span.k-widget {
+        width: 75% !important;
+    }
+
+    .divAssigneeEdit .k-widget .k-state-default > .k-select {
+        border-color: #ed6316;
+        background: #ffce9d;
+    }
+
+#spClose {
+    cursor: pointer;
+}
+
+/*////////////////////////////////Categories Admin/////////////////*/
+
+#Categories-grid {
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+    #Categories-grid .k-grid-header .k-header {
+        border-top-left-radius: 4px;
+        -webkit-border-top-left-radius: 4px;
+        -moz-border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        -webkit-border-top-right-radius: 4px;
+        -moz-border-top-right-radius: 4px;
+    }
+
+    #Categories-grid div[data-role="pager"] {
+        border-bottom-left-radius: 4px;
+        -webkit-border-bottom-left-radius: 4px;
+        -moz-border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        -moz-border-bottom-right-radius: 4px;
+        color: #ed6316;
+    }
+
+        #Categories-grid div[data-role="pager"] .k-link:hover {
+            border-color: #ed6316;
+        }
+
+/*State Buttons in More details....*/
+#form0, #form1, #form2 {
+    float: left;
+    margin: 0px 9px 33px 0px;
+}
+
+/*profile account*/
+.profile-style {
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    padding: 1%;
+}
+
+/*hidepassword field*/
+.hidePassword {
+    display: none;
+}
+
+#userTasks {
+    display: inline-block !important;
+}
+
+.profileInfo {
+    width: 50%;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.change-password {
+    color: #ed6316 !important;
+    border: 1px solid #ed6316 !important;
+    border-radius: 9px !important;
+    height: 40px !important;
+    background: #dddddd !important;
+    background-image: linear-gradient(to bottom, #cfcfcf, #c7c7c7);
+    padding: 9px !important;
+}
+
+    .change-password:hover {
+        color: #fff !important;
+        text-shadow: 0 1px 0 #ed6316 !important;
+        background-color: #ed6316 !important;
+        background: rgba(237,99,22,1) !important;
+        background: -moz-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%) !important;
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(237,99,22,1)), color-stop(55%, rgba(241,159,77,1)), color-stop(100%, rgba(252,213,114,1))) !important;
+        background: -webkit-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%) !important;
+        background: -o-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%) !important;
+        background: -ms-linear-gradient(top, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%) !important;
+        background: linear-gradient(to bottom, rgba(237,99,22,1) 0%, rgba(241,159,77,1) 55%, rgba(252,213,114,1) 100%) !important;
+        text-decoration: none;
+    }
+
+
+/*Responsive*/
+@media (min-width: 1200px) {
+    .row-fluid .span4 {
+        width: 25% !important;
+    }
+
+    .ticket-heading h4 {
+        margin: 2%;
+        font-size: 14px;
+    }
+    /*Column Tickets*/
+    .divToDo, .divInProgress, .divDone {
+        width: 21.3%;
+        height: 1200px;
+        float: left;
+        margin: 0 5%;
+        background: #f1f1f1;
+        font-size: 12px;
+    }
+
+    .ticket-body {
+        padding: 5%;
+        height: 70px;
+        overflow: hidden;
+    }
+
+
+    .row-fluid .ticketBox:first-child,
+    .row-fluid .ticketTasks {
+        margin: 0 3% !important;
+    }
+
+    form[action^="/CommentsAdmin/Edit"] {
+        width: 50%;
+    }
+
+    .detailsBox {
+        width: 40%;
+    }
+
+    .row {
+        width: 1170px;
+        margin: 0 auto !important;
+    }
+
+    .profileInf p {
+        font-size: 1em;
+    }
+}
